@@ -1,0 +1,27 @@
+{
+  "name": "fsd_-2021",
+  "version": "1.0.0",
+  "description": "FSD course",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serjge/FSD.git"
+  },
+  "keywords": [
+    "FSD",
+    "course"
+  ],
+  "author": "Serjge (Serjge@yandex.ru)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serjge/FSD/issues"
+  },
+  "homepage": "https://github.com/Serjge/FSD#readme",
+  "devDependencies": {
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
+  }
+}
