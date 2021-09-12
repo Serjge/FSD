@@ -50,7 +50,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: './index.js',
+    main: ['@babel/polyfill', './index.js'],
     analitics: './analitics.js',
   },
   output: {
@@ -70,6 +70,7 @@ module.exports = {
     port: 4200,
     hot: isDev,
   },
+  devtool: isProd ? false : 'hidden-source-map',
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html',
@@ -114,6 +115,16 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'fonts',
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         },
       },
     ],
