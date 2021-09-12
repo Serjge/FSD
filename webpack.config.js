@@ -13,6 +13,19 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
   },
+  resolve: {
+    extensions: ['.js', '.png', '.json', '.css'], // настройка сокращений по умолчанию не нужно писать в импорте
+    alias: {
+      '@assents': path.resolve(__dirname, 'src/assents'), // настройка относительного пути
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html',
@@ -26,12 +39,22 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|svg|giv)$/,
-        use: ['file-loader'],
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images',
+          publicPath: 'assets',
+          name: '/[contenthash].[ext]',
+        },
       },
       {
-        test: /\.(ttf|woff|woff2|oet)$/,
-        use: ['file-loader'],
+        test: /\.(ttf|woff|woff2|oet)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'fonts',
+          publicPath: 'assets',
+          name: '/[contenthash].[ext]',
+        },
       },
     ],
   },
