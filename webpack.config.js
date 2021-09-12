@@ -24,6 +24,28 @@ const optimization = () => {
   return config;
 };
 
+const cssloader = (extra) => {
+  const loaders = [
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        publicPath: (resourcePath, context) => {
+          return path.relative(path.dirname(resourcePath), context) + '/';
+        },
+      },
+    },
+    'css-loader',
+  ];
+
+  if (extra) {
+    loaders.push(extra);
+  }
+
+  return loaders;
+};
+
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
+
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
@@ -33,7 +55,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
+    filename: filename('js'),
   },
   resolve: {
     extensions: ['.js', '.png', '.json', '.css'], // настройка сокращений по умолчанию не нужно писать в импорте
@@ -65,20 +87,18 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: filename('css'),
     }),
   ],
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {},
-          },
-          'css-loader',
-        ],
+        test: /\.css$/i,
+        use: cssloader(),
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: cssloader('sass-loader'),
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -86,7 +106,7 @@ module.exports = {
         options: {
           outputPath: 'images',
           publicPath: 'assets',
-          name: '/[contenthash].[ext]',
+          name: '/[hash].[ext]',
         },
       },
       {
@@ -94,8 +114,6 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'fonts',
-          publicPath: 'assets',
-          name: '/[contenthash].[ext]',
         },
       },
     ],
