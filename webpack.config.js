@@ -73,11 +73,13 @@ module.exports = {
   devtool: isProd ? false : 'hidden-source-map',
   plugins: [
     new HTMLWebpackPlugin({
-      template: './index.html',
+      template: './index.pug',
+      filename: './index.html',
       minify: {
         collapseWhitespace: isProd,
       },
     }),
+
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
