@@ -51,7 +51,7 @@ module.exports = {
   mode: 'development',
   entry: {
     main: ['@babel/polyfill', './index.js'],
-    analitics: './analitics.js',
+    colors: './pages-and-uikit/colors.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -60,7 +60,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.png', '.json', '.css'], // настройка сокращений по умолчанию не нужно писать в импорте
     alias: {
-      '@assents': path.resolve(__dirname, 'src/assents'), // настройка относительного пути
+      '@p-a-u': path.resolve(__dirname, 'src/pages-and-uikit'), // настройка относительного пути
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@': path.resolve(__dirname, 'src'),
     },
@@ -75,6 +75,13 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: './index.pug',
       filename: './index.html',
+      minify: {
+        collapseWhitespace: isProd,
+      },
+    }),
+    new HTMLWebpackPlugin({
+      template: './pages-and-uikit/colors.pug',
+      filename: './colors.html',
       minify: {
         collapseWhitespace: isProd,
       },
@@ -118,6 +125,10 @@ module.exports = {
         options: {
           outputPath: 'fonts',
         },
+      },
+      {
+        test: /\.pug$/,
+        use: 'pug-loader',
       },
       {
         test: /\.js$/,
