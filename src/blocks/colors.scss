@@ -1,0 +1,29 @@
+@import '../styles/variables.scss';
+body {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  font-style: $font-color;
+}
+
+.wrapper {
+  max-width: $desktop-width;
+  position: relative;
+  margin: 145px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.colors {
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__shade-dark100 {
+    width: 70px;
+    height: 70px;
+    background-color: $dark100;
+    margin: 10px;
+  }
+}

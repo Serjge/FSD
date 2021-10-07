@@ -1,0 +1,38 @@
+//- mixin colors(options)
+//-   -
+//-     var shadeClassName = "shade"
+//-     var nameColor = "name-colors"
+//-     var HexColor = "HEX-color"
+
+
+//-   .colors
+//-         div(class = shadeClassName)
+//-         .colors__text
+//-           h2 Dark Shade 100%
+//-           p #1F2041
+
+mixin colors(nameColor, shadeName)
+  //- -
+  //-   var shadeClassName = "shade"
+  //-   var nameColor = "name-colors"
+  //-   var HexColor = "HEX-color"
+
+
+  .colors
+    .colors__shade(class='colors__shade-'+attributes.class)
+    .colors__text 
+      h2= nameColor
+      p #1F2041
+
+mixin colors2(nameColor, shadeName, hex)
+  //- -
+  //-   var shadeClassName = "shade"
+  //-   var nameColor = "name-colors"
+  //-   var HexColor = "HEX-color"
+
+
+  .colors
+    .colors__shade(class='colors__shade-'+shadeName)
+    .colors__text 
+      h2= nameColor
+      p #+${hex}

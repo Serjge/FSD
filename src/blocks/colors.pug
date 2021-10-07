@@ -1,0 +1,64 @@
+include ./colors-shade.pug
+
+-
+    let data = [
+      {
+        nameColor: 'Dark shade 100%',
+        colorClass: 'colors__shade-dark100',
+        colorHex: '#1F2041'
+      },
+      {
+        nameColor: 'Dark shade 75%',
+        colorClass: 'colors__shade-dark75',
+        colorHex: '#1F2041'
+      },
+      {
+        nameColor: 'Dark shade 50%',
+        colorClass: 'colors__shade-dark50%',
+        colorHex: '#1F2041'
+      },
+      {
+        nameColor: 'Dark shade 25%',
+        colorClass: 'colors__shade-dark25%',
+        colorHex: '#1F2041'
+      },
+      {
+        nameColor: 'Dark shade 5%',
+        colorClass: 'colors__shade-dark5%',
+        colorHex: '#1F2041'
+      },
+      {
+        nameColor: 'Purple',
+        colorClass: 'colors__shade-purple',
+        colorHex: '#BC9CFF'
+      },
+      {
+        nameColor: 'Green',
+        colorClass: 'colors__shade-green',
+        colorHex: '#6FCF97'
+      },
+    ];
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+  body 
+    .wrapper
+      .colors
+        each dataItem in data
+          .colors__wrapper
+            .colors__shade(class= dataItem.colorClass )
+            .colors__text
+              h2= dataItem.nameColor
+              p= dataItem.colorHex
+      .type
+        .type__name
+        p H1 
+        .type__text
+          p This one is the sub-section or widget title
+
+    

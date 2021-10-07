@@ -1,0 +1,37 @@
+//main colors
+$dark100: #1f2041;
+$dark75: rgba(31, 32, 65, 0.75);
+$dark50: rgba(31, 32, 65, 0.5);
+$dark25: rgba(31, 32, 65, 0.25);
+$dark5: rgba(31, 32, 65, 0.05);
+$purple: #bc9cff;
+$green: #6fcf97;
+
+// Font
+$font-family: 'Montserrat', sans-serif;
+$font-color: $dark75;
+$font-size: 14px;
+$font-weight: 400;
+$line-height: 24px;
+
+$font-color--h1: $dark100;
+$font-size--h1: 24px;
+$font-weight--h1: 700;
+$line-height--h1: 29px;
+
+$font-color--h2: $dark100;
+$font-size--h2: 19px;
+$font-weight--h2: 700;
+$line-height--h2: 23px;
+
+$font-color--h3: $dark100;
+$font-size--h3: 12px;
+$font-weight--h3: 700;
+$line-height--h3: 15px;
+
+//size
+$desktop-width: 1160px;
+$smDesktopWidth: 980px;
+$tableWidth: 768px;
+$phoneWidth: 480px;
+$smPhoneWidth: 320px;
